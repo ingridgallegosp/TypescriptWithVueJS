@@ -11,7 +11,6 @@ console.log(sum(8,5))
 //Typing reactive data
 
 
-
 const user: User = reactive({
     id: 1,
     username: "danielkellyio",
