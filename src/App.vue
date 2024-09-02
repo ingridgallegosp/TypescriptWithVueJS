@@ -1,7 +1,12 @@
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
+import type Ref from 'vue'
 import type User from './types/User';
+import type Emoji from '@/types/Emoji';
+import TheHeader from '@/components/TheHeader.vue';
+import EntryEditor from '@/components/EntryEditor.vue';
 
+//Explicit Typing
 const sum = (x: number, y: number) => {
     return x+y
 }
@@ -9,20 +14,31 @@ const sum = (x: number, y: number) => {
 console.log(sum(8,5))
 
 //Typing reactive data
-
-
+// import interface from types
 const user: User = reactive({
     id: 1,
     username: "danielkellyio",
     settings:[]    
 })
-
 console.log(user)
+
+//Typing Refs
+//Inferred ref types take the first value assigned but for more complex refs it´s required to use Ref
+
+const text = ref(""); // type inferred
+//const emoji: Ref<Emoji|null> = ref();
+//const emoji = ref<Emoji | null>(null);
+
+//Typing
+
 
 </script>
 
 <template>
- {{ user }}
+    <main class="container m-auto p-10">
+        <TheHeader />
+        <EntryEditor :user="user"/>
+    </main>
 </template>
 
 <style scoped>
