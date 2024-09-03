@@ -21,14 +21,18 @@ const emoji = ref<Emoji | null>(null);// Reactive reference with a valid Emoji o
 //Typing computed
 const charCount = computed(() => text.value.length);
 
-
+//Typing events
+const handleTextInput=(e:Event)=>{
+    const textarea = e.target
+    console.log(textarea)
+}
 
 </script>
 <template>
     <form class="entry-form" @submit.prevent="handleSubmit">
     <textarea
-        v-model="text"
-        
+        :value="text"
+        @keyup="handleTextInput"
         :placeholder="`New Journal Entry for ${props.user.username || 'anonymous'}`"
     ></textarea>
         <EmojiField v-model="emoji" />
